@@ -1,71 +1,38 @@
-# Getting Started with Create React App
+日本人メンターさん、同期生の皆さん、そしてアフリカのメンターさんお元気ですか。
+皆さんへ桜という歌を歌ってみました。もしお気づきになった方は、さりげなく聴いていただきたいです。アフリカのメンターさんは日本の桜をご存知ですかね。。とても綺麗な花です。それと同じくらい綺麗な日本語が出てくる歌なので、喜んでもらえたら嬉しいです！
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+URL: [https://fast-basin-96000.herokuapp.com/](https://fast-basin-96000.herokuapp.com/)
 
-## Available Scripts
+## 使用技術
+- HTML
+- CSS
+- React 18.0.0
+  - axios
+  - css: 
+    - styled components
+  - material ui
+  - react animations
 
-In the project directory, you can run:
+## 翻訳機能
+簡単な仕様になりますが、英→日 の翻訳機能を入れました。必要であれば、皆さんの用途に応じてご使用ください。
+### Google Apps Script（GAS）
+Google翻訳APIを調べたところ、`最初の 500,000 文字 *（1 か月あたり） 無料`と記載がありました。制限なく無料で使いたいと思い、次の情報を拝見し参照させていただきました。→ [Google翻訳APIを無料で作る方法](https://qiita.com/satto_sann/items/be4177360a0bc3691fdf)
+GASはJavaScriptベースの言語であり、基本的な文法は同じのようです。フロントエンドからaxiosでリクエストを送り、下記APIで翻訳語にレスポンスを返す流れになります。
 
-### `npm start`
+<img width="642" alt="translate_api_src" src="https://user-images.githubusercontent.com/83779040/163544342-b7b2bb71-9e2b-49d6-b6aa-93cd2ba631a6.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 制御されたコンポーネント
+Reactの公式情報です。
+> ### 非制御コンポーネント
+> ほとんどの場合では、フォームの実装には制御されたコンポーネント (controlled component) を使用することをお勧めしています。制御されたコンポーネントでは、フォームのデータは React コンポーネントが扱います。非制御コンポーネント (uncontrolled component) はその代替となるものであり、フォームデータを DOM 自身が扱います。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+今回はお勧め通りに制御されたコンポーネントで作成することにしました。
+[Material UIのTextFieldコンポーネントのドキュメント](https://mui.com/material-ui/api/text-field/)やデモ内容も参考にし、入力されるたびにstate（textという名前にしています）が更新され、コンポーネントが再レンダーされることを確認できました。まだまだ学習中ですが、再レンダーされたコンポーネント配下のコンポーネントも同じように再レンダーされるとのことで、今後に向けてメモ化などの対策の必要性を学べました。
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# sakura-song-react
+### 実行手順
+```
+$ git clone git@github.com:Kosuke-Nagamatsu/sakura-song-react.git
+$ cd sakura-song-react
+$ npm install
+$ npm start
+```
