@@ -29,7 +29,7 @@ export const Message = () => {
 const SDiv = styled.div`
   color: #fff;
   background-color: #161616;
-  padding: 1rem 0;
+  padding: 0.1rem 0;
 `;
 
 const STitle = styled.h1`
@@ -41,7 +41,7 @@ const STitle = styled.h1`
 const SP = styled.p`
   font-weight: 300;
   font-size: 1.6rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
 `;
 
 const SSpan = styled.span`
