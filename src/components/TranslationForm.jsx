@@ -7,7 +7,12 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 export const TranslationForm = () => {
   const apiId = process.env.REACT_APP_TRANSLATE_API_ID;
   const [resText, setResText] = useState("");
-  const [languages, setLanguages] = useState({ source: "en", target: "ja", srcName: "English", tgtName: "Japanese" });
+  const [languages, setLanguages] = useState({
+    source: "en",
+    target: "ja",
+    srcName: "English",
+    tgtName: "Japanese"
+  });
   const { source, target, srcName, tgtName } = languages;
 
   const handleClick = () => {
