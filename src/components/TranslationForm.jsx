@@ -4,28 +4,32 @@ import { useState } from 'react';
 import { IconButton, TextField } from '@mui/material';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 
-export const TranslationForm = () => {
+
+export const TranslationForm = (props) => {
+
   const apiId = process.env.REACT_APP_TRANSLATE_API_ID;
   const [resText, setResText] = useState("");
+  const { source = "en", target = "ja", sourceName = "English", targetName = "Japanese" } = props;  // propsがない場合（ {} の場合 ）、デフォルト値を設定
   const [languages, setLanguages] = useState({
-    source: "en",
-    target: "ja",
-    srcName: "English",
-    tgtName: "Japanese"
+    src: source,
+    tgt: target,
+    srcName: sourceName,
+    tgtName: targetName
   });
-  const { source, target, srcName, tgtName } = languages;
+  const { src, tgt, srcName, tgtName } = languages;
+
 
   const handleClick = () => {
-    const newSrc = target;
-    const newTgt = source;
+    const newSrc = tgt;
+    const newTgt = src;
     const newSrcName = tgtName;
     const newTgtName = srcName;
 
     // 英→日 を 日→英 のように対象言語を入れ替える
     setLanguages((prev) => ({
       ...prev,
-      source: newSrc,
-      target: newTgt,
+      src: newSrc,
+      tgt: newTgt,
       srcName: newSrcName,
       tgtName: newTgtName
     }));
@@ -34,8 +38,8 @@ export const TranslationForm = () => {
   const handleChange = (e) => {
     const text = e.target.value;
 
-    // text：翻訳するテキスト、source：翻訳前の言語、target：翻訳後の言語 をパラメータに指定しリクエストを送信
-    axios.get(`https://script.google.com/macros/s/${apiId}/exec?text=${text}&source=${source}&target=${target}`)
+    // text：翻訳するテキスト、src：翻訳前の言語、tgt：翻訳後の言語 をパラメータに指定しリクエストを送信
+    axios.get(`https://script.google.com/macros/s/${apiId}/exec?text=${text}&source=${src}&target=${tgt}`)
       .then((response) => {
         setResText(response.data.text);
       }).catch((error) => {
